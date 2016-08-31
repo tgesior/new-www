@@ -2,7 +2,7 @@
   "name": "bright-www",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --optimize-minimize",
     "start": "webpack-dev-server --content-base dist --port 3001",
     "postinstall": "typings install"
   },
