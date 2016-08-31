@@ -7,7 +7,9 @@ $std-spacing: 1em;
 $rotation: -15deg;
 $container-width: 75em;
 $nav-height: 9em;
-$nav-margin-left: 16em;
+$nav-margin-left: 17.25em;
+
+$transition: .25s ease-in-out;
 
 @mixin dark-box() {
     background-color: $black-color;
@@ -16,15 +18,7 @@ $nav-margin-left: 16em;
 
 body {
     font-size: calc(.8em + 1vw);
-
-    &:before { // full-width to the right black background behind nav
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: $nav-height;
-        border-right: 50vw solid $black-color;
-    }
+    font-family: 'Exo 2', sans-serif;
 
     > .container:after { // bottom pictograms bar
         content: '';
@@ -49,6 +43,7 @@ header {
 
     h1 {
         float: left;
+        margin: .5em;
 
         a {
             display: inline-block;
@@ -63,62 +58,128 @@ header {
 }
 
 nav {
-    $nav-spacing-multiplier: 3;
-
-    width: calc(100% - #{$nav-margin-left} - #{$nav-spacing-multiplier * $std-spacing});
-    height: $nav-height - (2 * $nav-spacing-multiplier * $std-spacing);
+    width: 100%;
+    height: $nav-height - (6 * $std-spacing);
 
     margin-left: $nav-margin-left;
-    padding: $nav-spacing-multiplier * $std-spacing;
+    padding: 3 * $std-spacing $std-spacing;
     
     transform: skewX($rotation);
+    transform-origin: top;
+    transition: $transition height;
     @include dark-box();
 
     ul {
-        float: right;
+        opacity: 0;
         padding: 0;
-        margin: 0 2em;
+        margin: 2.5 * $std-spacing 0 0 .5 * $std-spacing;
         transform: skewX(-$rotation);
+        transition: $transition opacity;
     }
 
     .item {
-        display: inline-block;
         list-style: none;
-        border-right: 3px solid $brand-color;
 
         a {
             display: inline-block;
 
             color: $white-color;
-            padding: $std-spacing 2 * $std-spacing;
+            padding: $std-spacing 0;
             text-decoration: none;
             text-transform: uppercase;
         }
         &.active a {
             color: $brand-color;
         }
+    }
 
-        &:last-child {
-            border-right: none;
+    &.expanded {
+        width: 100%;
+        height: 100vh;
+
+        ul {
+            opacity: 1;
+        }
+    }
+}
+
+#nav-icon {
+    $base-size: 2.5em;
+
+    width: $base-size;
+    height: .75 * $base-size;
+    position: relative;
+
+    margin-top: 2em;
+
+    transform: rotate(0deg) skewX(-$rotation);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+
+    span {
+        display: block;
+        position: absolute;
+        height: .12 * $base-size;
+        width: 100%;
+        background: $white-color;
+        border-radius: .12 * $base-size;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: $transition;
+    
+        &:nth-child(1) {
+            top: 0px;
+            transform-origin: left center;
+        }
+
+        &:nth-child(2) {
+            top: .3 * $base-size;
+            transform-origin: left center;
+        }
+
+        &:nth-child(3) {
+            top: .6 * $base-size;
+            transform-origin: left center;
+        }
+    }
+
+    .expanded & span {
+        &:nth-child(1) {
+            transform: rotate(45deg);
+            top: -.07 * $base-size;
+            left: .13 * $base-size;
+        }
+
+        &:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+        }
+
+        &:nth-child(3) {
+            transform: rotate(-45deg);
+            top: .65 * $base-size;
+            left: .13 * $base-size;
         }
     }
 }
 
 section {
     clear: both;
-    min-height: 30em;
+    min-height: 24em;
     padding: 3 * $std-spacing;
     padding-bottom: $std-spacing;
 
     &:before { // long yellow skewed bar
+        $width: 1.5 * $std-spacing;
         content: '';
 
         position: absolute;
         top: 0;
-        left: $nav-margin-left - 0.25em;
+        left: $nav-margin-left - $width;
         z-index: -1;
 
-        width: 1.5 * $std-spacing;
+        width: $width;
         height: 100%;
 
         transform: skewX($rotation);
@@ -141,9 +202,28 @@ footer {
     }
 }
 
+@media (min-width: 374px) {
+    nav {
+        padding: 3em 2em;
+    }
+
+    #nav-icon {
+        margin-top: $std-spacing;
+    }
+}
+
 @media (min-width: 767px) {
     body {
         font-size: 1em;
+
+        &:before { // full-width to the right black background behind nav
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: $nav-height;
+            border-right: 50vw solid $black-color;
+        }
 
         > .container:after { // bottom pictograms bar
             $left-shift: 4.9em;
@@ -156,5 +236,32 @@ footer {
             background-size: initial;
             background-position-y: 1em;
         }
+    }
+
+    nav {
+        width: calc(100% - #{$nav-margin-left});
+
+        ul {
+            opacity: 1;
+            float: right;
+            margin: 0 2em;
+        }
+
+        .item {
+            display: inline-block;
+            border-right: 3px solid $brand-color;
+
+            a {
+                padding: $std-spacing 2 * $std-spacing;
+            }
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+
+    #nav-icon {
+        display: none;
     }
 }
