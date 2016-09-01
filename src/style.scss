@@ -181,7 +181,7 @@ nav {
 
 section {
     clear: both;
-    min-height: 24em;
+    min-height: 28em;
     padding: 0 3 * $std-spacing $std-spacing;
 
     &:before { // long yellow skewed bar
@@ -256,6 +256,18 @@ footer {
             border-right: 50vw solid $black-color;
         }
 
+        &:after { // yellow bars between nav and content
+            content: '';
+            position: absolute;
+            top: $nav-height + 3em;
+            right: 0;
+            left: 22%; // arbitrary number so that it's not visible left of hero-image
+            z-index: -2;
+
+            height: 15px;
+            background-image: repeating-linear-gradient(90deg - $rotation, $white-color 0, $white-color 5px, $brand-color 5px, $brand-color 8px);
+        }
+
         > .container:after { // bottom pictograms bar
             $left-shift: 8.6em;
 
@@ -308,12 +320,18 @@ footer {
         }
     }
 
+    main {
+        position: relative;
+        z-index: 3;
+        padding-top: 4 * $std-spacing;
+    }
+
     footer .container:before {
         @include skewed-line();
 
         bottom: -1em;
         left: 3em;
-        z-index: 100;
+        z-index: 2;
 
         height: 20em;
         transform-origin: bottom;
