@@ -9,6 +9,7 @@ $container-width: 75em;
 $nav-height: 9em;
 $nav-margin-left: 17.25em;
 $skewed-line-width: 1.5 * $std-spacing;
+$hero-image-bottom-cut: 50px;
 
 $transition: .25s ease-in-out;
 
@@ -24,6 +25,10 @@ $transition: .25s ease-in-out;
 
     transform: skewX($rotation);
     background-color: $brand-color;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -53,7 +58,7 @@ header {
 
     h1 {
         float: left;
-        margin: .5em;
+        margin: .5 * $std-spacing .5 * $std-spacing 0;
 
         a {
             display: inline-block;
@@ -69,7 +74,7 @@ header {
 
 nav {
     width: 100%;
-    height: $nav-height - (6 * $std-spacing);
+    height: $nav-height;
 
     margin-left: $nav-margin-left;
     padding: 3 * $std-spacing $std-spacing;
@@ -177,8 +182,7 @@ nav {
 section {
     clear: both;
     min-height: 24em;
-    padding: 3 * $std-spacing;
-    padding-bottom: $std-spacing;
+    padding: 0 3 * $std-spacing $std-spacing;
 
     &:before { // long yellow skewed bar
         @include skewed-line();
@@ -190,6 +194,28 @@ section {
         height: 100%;
         transform-origin: top;
     }
+
+    main {
+        :first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+.hero-image {
+    $padding: 6 * $std-spacing;
+
+    float: left;
+    position: relative;
+    height: calc(100vw - #{$padding} - #{$hero-image-bottom-cut});
+    margin-bottom: $hero-image-bottom-cut;
+    overflow: hidden;
+
+    > * {
+        width: calc(100vw - #{$padding});
+        height: calc(100vw - #{$padding});
+        border-radius: 50%;
+    }
 }
 
 footer {
@@ -197,7 +223,6 @@ footer {
     clear: both;
     
     .container {
-        box-sizing: border-box;
         padding: $std-spacing;
         padding-left: 6em;
     }
@@ -245,7 +270,7 @@ footer {
     }
 
     nav {
-        width: calc(100% - #{$nav-margin-left});
+        width: calc(100% - #{$nav-margin-left} + #{4 * $std-spacing});
 
         ul {
             opacity: 1;
@@ -271,6 +296,18 @@ footer {
         display: none;
     }
 
+    .hero-image {
+        $size: 350px;
+
+        margin: 0 3 * $std-spacing $hero-image-bottom-cut 0;
+        height: $size - $hero-image-bottom-cut;
+        
+        > * {
+            width: $size;
+            height: $size;
+        }
+    }
+
     footer .container:before {
         @include skewed-line();
 
@@ -284,6 +321,17 @@ footer {
 }
 
 @media (min-width: 1025px) {
+    .hero-image {
+        $size: 450px;
+
+        height: $size - $hero-image-bottom-cut;
+        
+        > * {
+            width: $size;
+            height: $size;
+        }
+    }
+
     footer .container {
         padding-left: 8em;
 
