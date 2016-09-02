@@ -33,15 +33,15 @@ module.exports = {
             { test: /\.html$/, loader: StringReplacePlugin.replace({
                 replacements: [
                     {
-                        pattern: /<!-- @header -->/ig,
-                        replacement: function () {
-                            return fs.readFileSync('./src/_header.html'); 
+                        pattern: /<!-- @header\((.*)\) -->/ig,
+                        replacement: function (fullMatch, p1) {
+                            return fs.readFileSync('./src/_header.html', {encoding: 'UTF-8'}).replace('{{BODY_CLASS}}', p1 || 'standard'); 
                         }
                     },
                     {
-                        pattern: /<!-- @footer -->/ig,
+                        pattern: /<!-- @footer\(\) -->/ig,
                         replacement: function () {
-                            return fs.readFileSync('./src/_footer.html');
+                            return fs.readFileSync('./src/_footer.html', {encoding: 'UTF-8'});
                         }
                     }
                 ]

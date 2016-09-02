@@ -1,0 +1,42 @@
+$black-color: #000;
+$white-color: #fff;
+$brand-color: #FFED00;
+
+$std-spacing: 1em;
+
+$rotation: -15deg;
+$container-width: 75em;
+$nav-height: 9em;
+$nav-margin-left: 17.25em;
+$skewed-line-width: 1.5 * $std-spacing;
+$image-hero-bottom-cut: 50px;
+
+$transition: .25s ease-in-out;
+
+@mixin dark-box() {
+    background-color: $black-color;
+    color: $white-color;
+}
+
+@mixin skewed-line() {
+    content: '';
+    position: absolute;
+    width: $skewed-line-width;
+
+    transform: skewX($rotation);
+    background-color: $brand-color;
+}
+
+@mixin bars-line() {
+    content: '';
+    position: absolute;
+    height: 15px;
+    background-image: repeating-linear-gradient(90deg - $rotation, $white-color 0, $white-color 5px, $brand-color 5px, $brand-color 8px);
+}
+
+@mixin round-image($size) {
+    width: $size;
+    height: $size;
+    max-width: 100%;
+    border-radius: 50%;
+}

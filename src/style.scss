@@ -1,31 +1,4 @@
-$black-color: #000;
-$white-color: #fff;
-$brand-color: #FFED00;
-
-$std-spacing: 1em;
-
-$rotation: -15deg;
-$container-width: 75em;
-$nav-height: 9em;
-$nav-margin-left: 17.25em;
-$skewed-line-width: 1.5 * $std-spacing;
-$hero-image-bottom-cut: 50px;
-
-$transition: .25s ease-in-out;
-
-@mixin dark-box() {
-    background-color: $black-color;
-    color: $white-color;
-}
-
-@mixin skewed-line() {
-    content: '';
-    position: absolute;
-    width: $skewed-line-width;
-
-    transform: skewX($rotation);
-    background-color: $brand-color;
-}
+@import '_prefix';
 
 * {
     box-sizing: border-box;
@@ -182,7 +155,7 @@ nav {
 section {
     clear: both;
     min-height: 28em;
-    padding: 0 3 * $std-spacing $std-spacing;
+    padding: 0 1.5 * $std-spacing $std-spacing;
 
     &:before { // long yellow skewed bar
         @include skewed-line();
@@ -200,22 +173,36 @@ section {
             margin-top: 0;
         }
     }
+
+    h2 {
+        color: $brand-color;
+        text-transform: uppercase;
+    }
 }
 
-.hero-image {
+.clearfix {
+    clear: both;
+}
+
+.image-hero {
     $padding: 6 * $std-spacing;
 
     float: left;
     position: relative;
-    height: calc(100vw - #{$padding} - #{$hero-image-bottom-cut});
-    margin-bottom: $hero-image-bottom-cut;
+    height: calc(100vw - #{$padding} - #{$image-hero-bottom-cut});
+    margin-bottom: $image-hero-bottom-cut;
     overflow: hidden;
 
     > * {
-        width: calc(100vw - #{$padding});
-        height: calc(100vw - #{$padding});
-        border-radius: 50%;
+        @include round-image(calc(100vw - #{$padding}));
     }
+}
+
+.image-md {
+    @include round-image(128px);
+}
+.image-sm {
+    @include round-image(120px);
 }
 
 footer {
@@ -256,16 +243,13 @@ footer {
             border-right: 50vw solid $black-color;
         }
 
-        &:after { // yellow bars between nav and content
-            content: '';
-            position: absolute;
+        &.standard:after { // yellow bars between nav and content
+            @include bars-line();
+
             top: $nav-height + 3em;
             right: 0;
-            left: 22%; // arbitrary number so that it's not visible left of hero-image
+            left: 22%; // arbitrary number so that it's not visible left of image-hero
             z-index: -2;
-
-            height: 15px;
-            background-image: repeating-linear-gradient(90deg - $rotation, $white-color 0, $white-color 5px, $brand-color 5px, $brand-color 8px);
         }
 
         > .container:after { // bottom pictograms bar
@@ -308,16 +292,24 @@ footer {
         display: none;
     }
 
-    .hero-image {
+    .image-hero {
         $size: 350px;
 
-        margin: 0 3 * $std-spacing $hero-image-bottom-cut 0;
-        height: $size - $hero-image-bottom-cut;
+        margin: 0 3 * $std-spacing $image-hero-bottom-cut 0;
+        height: $size - $image-hero-bottom-cut;
         
         > * {
             width: $size;
             height: $size;
         }
+    }
+
+    .image-md {
+        @include round-image(150px);
+    }
+
+    section {
+        padding: 0 3 * $std-spacing $std-spacing;
     }
 
     main {
@@ -338,11 +330,11 @@ footer {
     }
 }
 
-@media (min-width: 1025px) {
-    .hero-image {
+@media (min-width: 1023px) {
+    .image-hero {
         $size: 450px;
 
-        height: $size - $hero-image-bottom-cut;
+        height: $size - $image-hero-bottom-cut;
         
         > * {
             width: $size;
