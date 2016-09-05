@@ -1,6 +1,7 @@
 require('normalize.css/normalize.css');
 
-const pages = ['index', 'team', 'services'];
+const pages = ['index', 'team', 'services', 'portfolio'];
+const projects = ['lorem'];
 
 try {
     for (let page of pages) {
@@ -9,8 +10,12 @@ try {
             require(`./${page}.scss`);
         }
     }
+
+    for (let project of projects) {
+        require(`file?name=projects/[name].[ext]!./projects/${project}.html`);
+    }
 } catch (err) {
-    if (!__webpack_modules__) {
+    if (!__webpack_modules__) { // catch false positives in development
         throw err;
     }
 }

@@ -205,7 +205,6 @@ section {
             padding-left: 1em;
             font-size: smaller;
             transform: skewX($rotation);
-            z-index: -1;
 
             &:before {
                 content: '';
@@ -238,6 +237,14 @@ section {
 
     > * {
         @include round-image(calc(100vw - #{$padding}));
+    }
+
+    .project & {
+        height: calc(100vw - #{$padding});
+
+        img {
+            border: .5em solid $black-color;
+        }
     }
 }
 
@@ -358,6 +365,10 @@ footer {
             width: $size;
             height: $size;
         }
+
+        .project & {
+            height: $size;
+        }
     }
 
     .image-md {
@@ -381,10 +392,12 @@ footer {
                 width: $size;
 
                 opacity: 0;
+                pointer-events: none;
                 font-size: smaller;
                 transition: $transition;
 
-                strong {
+                strong, 
+                a {
                     color: $brand-color;
                 }
             }
@@ -392,7 +405,7 @@ footer {
             li {
                 float: left;
                 padding: .5em;
-                padding-bottom: 8em;
+                margin-bottom: 8em;
                 position: relative;
                 cursor: pointer;
 
@@ -411,6 +424,7 @@ footer {
                     .list-item-description { 
                         opacity: 1;
                         left: 0;
+                        pointer-events: all;
                     }
                 }
             }
@@ -443,6 +457,10 @@ footer {
         
         > * {
             width: $size;
+            height: $size;
+        }
+
+        .project & {
             height: $size;
         }
     }
