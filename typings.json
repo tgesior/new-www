@@ -1,5 +1,5 @@
 {
   "globalDependencies": {
-    "require": "registry:dt/require#2.1.20+20160316155526"
+    "require": "github:DefinitelyTyped/DefinitelyTyped/webpack/webpack-env.d.ts#cc3d223a946f661eff871787edeb0fcb8f0db156"
   }
 }

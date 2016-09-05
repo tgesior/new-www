@@ -174,6 +174,29 @@ section {
         }
     }
 
+    em {
+        font-style: normal;
+        font-weight: bold;
+        font-size: larger;
+    }
+
+    li {
+        list-style: none;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            position: relative;
+            left: -1em;
+            top: 0;
+
+            width: 2px;
+            height: .75em;
+            background-color: $brand-color;
+            transform: skewX($rotation);
+        }
+    }
+
     h2 {
         color: $brand-color;
         text-transform: uppercase;
@@ -188,7 +211,6 @@ section {
     $padding: 6 * $std-spacing;
 
     float: left;
-    position: relative;
     height: calc(100vw - #{$padding} - #{$image-hero-bottom-cut});
     margin-bottom: $image-hero-bottom-cut;
     overflow: hidden;
@@ -198,6 +220,19 @@ section {
     }
 }
 
+.images-group {
+    float: left;
+    max-width: 45%;
+    margin-right: $std-spacing;
+
+    img {
+        margin: 0 $std-spacing $std-spacing 0;;
+    }
+}
+
+.image-lg {
+    @include round-image(128px);
+}
 .image-md {
     @include round-image(128px);
 }
@@ -340,6 +375,10 @@ footer {
             width: $size;
             height: $size;
         }
+    }
+
+    .image-lg {
+        @include round-image(190px);
     }
 
     footer .container {

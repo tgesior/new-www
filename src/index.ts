@@ -1,10 +1,19 @@
 require('normalize.css/normalize.css');
 
-require('file?name=[name].[ext]!./index.html');
-require('./style.scss');
+const pages = ['index', 'team', 'services'];
 
-require('file?name=[name].[ext]!./team.html');
-require('./team.scss');
+try {
+    for (let page of pages) {
+        require(`file?name=[name].[ext]!./${page}.html`);
+        if (__webpack_modules__[require.resolveWeak(`./${page}.scss`)]) {
+            require(`./${page}.scss`);
+        }
+    }
+} catch (err) {
+    if (!__webpack_modules__) {
+        throw err;
+    }
+}
 
 document.getElementById('nav-icon').addEventListener('click', event => document.getElementsByTagName('nav')[0].classList.toggle('expanded'));
 
