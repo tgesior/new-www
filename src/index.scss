@@ -306,7 +306,7 @@ footer {
             border-right: 50vw solid $black-color;
         }
 
-        &.standard .container:before { // yellow bars between nav and content
+        &.standard > .container:before { // yellow bars between nav and content
             @include bars-line();
 
             top: $nav-height + 3em;
