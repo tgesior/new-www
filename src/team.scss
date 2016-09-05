@@ -7,7 +7,7 @@
         }
 
         img {
-            margin: .5 * $std-spacing;
+            margin: .5em;
 
             &:first-of-type {
                 margin-left: 0;
@@ -21,8 +21,11 @@
     .team-subheading {
         clear: both;
         position: relative;
-        padding-top: $std-spacing;
-        margin-bottom: 1.5 * $std-spacing;
+        padding-top: 1em;
+        margin-bottom: 1.5em;
+
+        color: $brand-color;
+        text-transform: uppercase;
         font-size: 2em;
         padding-left: 4em;
 
@@ -35,33 +38,6 @@
             width: 100%;
         }
     }
-
-    .team-members {
-        list-style: none;
-        padding-left: 0;
-
-        .team-memberbio {
-            position: relative;
-            padding-left: $std-spacing;
-            font-size: smaller;
-            transform: skewX($rotation);
-            z-index: -1;
-
-            &:before {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                top: -3em;
-                width: .25em;
-                background-color: $black-color;
-            }
-
-            strong {
-                color: $brand-color;
-            }
-        }
-    }
 }
 
 @media (min-width: 767px) {
@@ -71,58 +47,12 @@
 
             img {
                 flex: 1 1 auto;
-                margin: $std-spacing;
+                margin: 1em;
             }
 
             .team-info {
                 flex: 3 1 auto;
-                margin-left: 2 * $std-spacing;
-            }
-        }
-
-        .team-members {
-            margin-left: 6em;
-            padding-right: 6em;
-
-            .team-memberbio {
-                position: absolute;
-                left: -250%;
-                top: 130px;
-                width: 250%;
-
-                opacity: 0;
-                font-size: smaller;
-                transition: $transition;
-
-                strong {
-                    color: $brand-color;
-                }
-            }
-
-            li {
-                float: left;
-                padding: .5 * $std-spacing;
-                padding-bottom: 8 * $std-spacing;
-                position: relative;
-                cursor: pointer;
-
-                img {
-                    box-sizing: content-box;
-                }
-
-                &:hover {
-                    img {
-                        margin: -.5 * $std-spacing;
-                        border: .5 * $std-spacing solid $brand-color;
-                    }
-                }
-
-                &.open {
-                    .team-memberbio { 
-                        opacity: 1;
-                        left: 0;
-                    }
-                }
+                margin-left: 2em;
             }
         }
     }
@@ -130,16 +60,9 @@
 
 @media (min-width: 1023px) {
     .team {
-        $shift: 12em;
-
         .team-founders,
         .team-members {
-            margin-left: $shift; // move away from skewed bar
-        }
-
-        .team-members { // make sure bio fits
-            max-width: 55em + $shift;
-            padding-right: $shift;
+            margin-left: 12em; // move away from skewed bar
         }
     }
 }
