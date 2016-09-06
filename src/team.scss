@@ -63,6 +63,7 @@
         .team-founders,
         .team-members {
             margin-left: 12em; // move away from skewed bar
+            max-width: $max-width;
         }
     }
 }

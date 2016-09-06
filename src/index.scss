@@ -7,6 +7,7 @@
 body {
     font-size: calc(.8em + 1vw);
     font-family: 'Exo 2', sans-serif;
+    line-height: 1.5;
 
     > .container:after { // bottom pictograms bar
         content: '';
@@ -60,7 +61,6 @@ nav {
         opacity: 0;
         padding: 0;
         margin: 2.5em 0 0 .5em;
-        transform: skewX(-$rotation);
         transition: $transition opacity;
     }
 
@@ -74,6 +74,7 @@ nav {
             padding: 1em 0;
             text-decoration: none;
             text-transform: uppercase;
+            transform: skewX(-$rotation);
         }
         &.active a {
             color: $brand-color;
@@ -97,7 +98,7 @@ nav {
     height: .75 * $base-size;
     position: relative;
 
-    margin-top: 2em;
+    margin-top: 1em;
 
     transform: rotate(0deg) skewX(-$rotation);
     transition: .5s ease-in-out;
@@ -167,35 +168,6 @@ section {
         transform-origin: top;
     }
 
-    main {
-        :first-child {
-            margin-top: 0;
-        }
-
-        em {
-            font-style: normal;
-            font-weight: bold;
-            font-size: larger;
-        }
-
-        li {
-            list-style: none;
-
-            &:before {
-                content: '';
-                display: inline-block;
-                position: relative;
-                left: -1em;
-                top: 0;
-
-                width: 2px;
-                height: .75em;
-                background-color: $brand-color;
-                transform: skewX($rotation);
-            }
-        }
-    }
-
     .list-items {
         list-style: none;
         padding-left: 0;
@@ -216,9 +188,41 @@ section {
                 background-color: $black-color;
             }
 
-            strong {
+            strong, a {
                 color: $brand-color;
+                text-shadow: 0px 0px 5px $black-color;
             }
+        }
+    }
+}
+
+ main {
+    clear: both;
+
+    :first-child {
+        margin-top: 0;
+    }
+
+    em {
+        font-style: normal;
+        font-weight: bold;
+        font-size: larger;
+    }
+
+    li {
+        list-style: none;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            position: relative;
+            left: -1em;
+            top: 0;
+
+            width: 2px;
+            height: .75em;
+            background-color: $brand-color;
+            transform: skewX($rotation);
         }
     }
 }
@@ -234,6 +238,7 @@ section {
     height: calc(100vw - #{$padding} - #{$image-hero-bottom-cut});
     margin-bottom: $image-hero-bottom-cut;
     overflow: hidden;
+    shape-outside: circle();
 
     > * {
         @include round-image(calc(100vw - #{$padding}));
@@ -274,7 +279,6 @@ footer {
     
     .container {
         padding: 1em;
-        padding-left: 6em;
     }
 
     .outer {
@@ -283,13 +287,15 @@ footer {
     }
 }
 
-@media (min-width: 374px) {
+@media (min-width: 359px) {
     nav {
         padding: 3em 2em;
     }
+}
 
+@media (min-width: 411px) {
     #nav-icon {
-        margin-top: 1em;
+        margin-left: 1em;
     }
 }
 
@@ -333,7 +339,6 @@ footer {
 
         ul {
             opacity: 1;
-            float: right;
             margin: 0 2em;
         }
 
@@ -395,11 +400,7 @@ footer {
                 pointer-events: none;
                 font-size: smaller;
                 transition: $transition;
-
-                strong, 
-                a {
-                    color: $brand-color;
-                }
+                z-index: 3;
             }
 
             li {
@@ -435,17 +436,23 @@ footer {
         position: relative;
         z-index: 3;
         padding-top: 4em;
+        max-width: $max-width;
+        clear: none;
     }
 
-    footer .container:before {
-        @include skewed-line();
+    footer .container {
+        padding-left: 6em;
 
-        bottom: -1em;
-        left: 3em;
-        z-index: 2;
+        &:before {
+            @include skewed-line();
 
-        height: 20em;
-        transform-origin: bottom;
+            bottom: -1em;
+            left: 3em;
+            z-index: 2;
+
+            height: 20em;
+            transform-origin: bottom;
+        }
     }
 }
 

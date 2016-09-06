@@ -3,6 +3,7 @@ $white-color: #fff;
 $brand-color: #FFED00;
 
 $rotation: -15deg;
+$max-width: 80em;
 $nav-height: 9em;
 $nav-margin-left: 17.25em;
 $skewed-line-width: 1.5em;
@@ -36,4 +37,5 @@ $transition: .25s ease-in-out;
     height: $size;
     max-width: 100%;
     border-radius: 50%;
+    shape-outside: circle();
 }
