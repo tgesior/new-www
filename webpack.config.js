@@ -30,7 +30,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.ts$/, loader: 'ts-loader'},
-            { test: /\.(sv|pn|jp)g$/, loader: 'file-loader'},
+            { test: /\.(sv|pn|jp)g$/, loader: 'file-loader?name=[path][name].[ext]&context=./src'},
             { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
             { test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))},
             { test: /\.html$/, loader: StringReplacePlugin.replace({

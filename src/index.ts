@@ -20,6 +20,8 @@ try {
     }
 }
 
+require.context('./assets/', true, /^\.\/.*\.png/);
+
 document.getElementById('nav-icon').addEventListener('click', event => document.getElementsByTagName('nav')[0].classList.toggle('expanded'));
 
 const setActiveNavItem = (currentPage: string) => {
