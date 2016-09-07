@@ -5,6 +5,9 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
+const isDev = process.argv[1].indexOf('webpack-dev-server') !== -1;
+const PublicPath = isDev ? '': '/new-www';
+
 const sassLoaders = [
   'css-loader',
   'postcss-loader',
@@ -35,13 +38,16 @@ module.exports = {
                     {
                         pattern: /<!-- @header\((.*)\) -->/ig,
                         replacement: function (fullMatch, p1) {
-                            return fs.readFileSync('./src/_header.html', {encoding: 'UTF-8'}).replace('{{BODY_CLASS}}', p1 || 'standard'); 
+                            return fs.readFileSync('./src/_header.html', {encoding: 'UTF-8'})
+                                .replace(/{{PUBLIC_PATH}}/g, PublicPath)
+                                .replace(/{{BODY_CLASS}}/g, p1 || 'standard'); 
                         }
                     },
                     {
                         pattern: /<!-- @footer\(\) -->/ig,
                         replacement: function () {
-                            return fs.readFileSync('./src/_footer.html', {encoding: 'UTF-8'});
+                            return fs.readFileSync('./src/_footer.html', {encoding: 'UTF-8'})
+                                .replace(/{{PUBLIC_PATH}}/g, PublicPath);
                         }
                     }
                 ]
