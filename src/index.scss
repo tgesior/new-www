@@ -274,7 +274,7 @@ section {
     @include round-image(120px);
 }
 
- .subheading {
+.subheading {
     clear: both;
     position: relative;
     padding-top: 1em;
@@ -363,6 +363,7 @@ footer {
 
     nav {
         width: calc(100% - #{$nav-margin-left} + #{4em});
+        padding: 1.2em;
 
         ul {
             opacity: 1;
@@ -371,10 +372,11 @@ footer {
 
         .item {
             display: inline-block;
+            margin: .25em 0;
             border-right: 2px solid $brand-color;
 
             a {
-                padding: 1em;
+                padding: .75em 1em;
             }
 
             &:last-child {
@@ -494,6 +496,10 @@ footer {
 }
 
 @media (min-width: 1023px) {
+    nav {
+        padding: 3em 2em;
+    }
+
     .image-hero {
         $size: 450px;
 
