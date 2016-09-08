@@ -253,13 +253,10 @@ section {
 }
 
 .images-group {
-    float: left;
-    max-width: 45%;
-    margin: 3em 2em 0 0;
     text-align: center;
 
     img {
-        margin: 0 1em 1em 0;;
+        margin: 0 .5em 1em .5em;
     }
 }
 
@@ -381,8 +378,18 @@ footer {
         max-width: 150px;
     }
 
+    .images-group {
+        float: left;
+        max-width: 50%;
+        margin: 3em 2em 0 0;
+    }
+
     section {
         padding: 0 3em 1em;
+
+        .standard & {
+            padding-left: 4em;
+        }
 
         .list-items {
             margin-left: 6em;
