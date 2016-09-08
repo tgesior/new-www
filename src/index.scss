@@ -188,10 +188,14 @@ section {
                 background-color: $black-color;
             }
 
-            strong, a {
+            strong {
                 color: $black-color;
             }
         }
+    }
+
+    a {
+        color: $black-color;
     }
 }
 
@@ -268,6 +272,32 @@ section {
 }
 .image-sm {
     @include round-image(120px);
+}
+
+ .subheading {
+    clear: both;
+    position: relative;
+    padding-top: 1em;
+    margin-bottom: 1.5em;
+
+    color: $brand-color;
+    text-transform: uppercase;
+    font-size: 2em;
+    padding-left: 4em;
+
+    &:after {
+        @include bars-line();
+            
+        bottom: -.5em;
+        left: 0;
+        z-index: -2;
+        width: 100%;
+    }
+}
+
+.centered-info {
+    text-align: center;
+    font-size: larger;
 }
 
 footer {
