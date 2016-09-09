@@ -1,7 +1,7 @@
 require('normalize.css/normalize.css');
 
 const pages = ['index', 'team', 'services', 'portfolio'];
-const projects = ['lorem'];
+const projects = ['smarthelp', 'practi', 'pumpa', 'everytap', 'motivo', 'coffee', 'easycard', 'easytapp', 'pitupitu'];
 
 try {
     for (let page of pages) {
