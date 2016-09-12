@@ -21,6 +21,7 @@ try {
 }
 
 require.context('./assets/', true, /^\.\/.*\.(pn|jp|sv)g/);
+require.context('./assets/projects/', true, /^\.\/projects\/.*\.(pn|jp|sv)g/);
 
 document.getElementById('nav-icon').addEventListener('click', event => document.getElementsByTagName('nav')[0].classList.toggle('expanded'));
 
