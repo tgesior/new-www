@@ -29,18 +29,8 @@
             }
         }
 
-        input,
-        textarea,
-        button {
-            padding: .5em;
-            border: 1px solid $brand-color;
-            border-radius: 5px;
-        }
-
         button {
             float: right;
-            background-color: $brand-color;
-            padding: .5em 2em;
         }
     }
 }

@@ -229,18 +229,34 @@ section {
         }
     }
 
-    .links {
-        margin-top: 3em;
+    .links li {
+        display: inline-block;
+        padding: .25em;
 
-        li {
-            display: inline-block;
-            padding: .25em;
-
-            &:before {
-                content: none;
-            }
+        &:before {
+            content: none;
         }
     }
+
+    input,
+    textarea,
+    button,
+    a.button {
+        padding: .5em;
+        border: 1px solid $brand-color;
+        border-radius: 5px;
+    }
+
+    button,
+    a.button {
+        background-color: $brand-color;
+        padding: .5em 2em;
+        text-decoration: none;
+    }
+}
+
+.space-before {
+    margin-top: 3em;
 }
 
 .clearfix {
