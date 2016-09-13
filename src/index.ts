@@ -20,6 +20,7 @@ try {
     }
 }
 
+require('file?emitFile=false!./CNAME');
 require.context('./assets/', true, /^\.\/.*\.(pn|jp|sv)g/);
 require.context('./assets/projects/', true, /^\.\/projects\/.*\.(pn|jp|sv)g/);
 
