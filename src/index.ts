@@ -38,21 +38,14 @@ const setActiveNavItem = (currentPage: string) => {
 };
 
 const bindOpenableAction = () => {
-    document.addEventListener('click', (event: MouseEvent) => {
-        let element = event.target as Element;
-        
-        while (element !== null) {
-            if (element.classList.contains('js-openable')) {
-                let currentlyOpened = element.parentElement.querySelector('.open');
-                if (currentlyOpened) {
-                    currentlyOpened.classList.remove('open');
-                }
-                element.classList.toggle('open');
-                break;
+    Array.prototype.forEach.call(document.querySelectorAll('.js-openable'), (element: Element) => {
+        element.addEventListener('mouseenter', (event: MouseEvent) => {
+            let currentlyOpened = element.parentElement.querySelector('.open');
+            if (currentlyOpened) {
+                currentlyOpened.classList.remove('open');
             }
-
-            element = element.parentElement;
-        }
+            element.classList.toggle('open');
+        });
     });
 };
 

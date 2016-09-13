@@ -183,7 +183,7 @@ section {
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                top: -3em;
+                top: -1.65em;
                 width: .25em;
                 background-color: $black-color;
             }
@@ -237,22 +237,22 @@ section {
             content: none;
         }
     }
+}
 
-    input,
-    textarea,
-    button,
-    a.button {
-        padding: .5em;
-        border: 1px solid $brand-color;
-        border-radius: 5px;
-    }
+input,
+textarea,
+button,
+a.button {
+    padding: .5em;
+    border: 1px solid $brand-color;
+    border-radius: 5px;
+}
 
-    button,
-    a.button {
-        background-color: $brand-color;
-        padding: .5em 2em;
-        text-decoration: none;
-    }
+button,
+a.button {
+    background-color: $brand-color;
+    padding: .5em 2em;
+    text-decoration: none;
 }
 
 .space-before {
@@ -402,7 +402,7 @@ footer {
         .item {
             display: inline-block;
             margin: .25em 0;
-            border-right: 2px solid $brand-color;
+            border-right: 2px solid $brand-color;    
 
             a {
                 padding: .75em 1em;
@@ -560,5 +560,17 @@ footer {
         &:before {
             left: 4em;
         }
+    }
+}
+
+@media not screen and (min-device-pixel-ratio: 2) {
+    section .list-items .list-item-description:before {
+        box-shadow: 0px 0px 2px 0px;
+    }
+}
+
+@media not screen and (min-device-pixel-ratio: 2) and (min-width: 767px) {
+    nav .item {
+        backface-visibility: hidden;
     }
 }
