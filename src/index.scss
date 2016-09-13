@@ -228,6 +228,19 @@ section {
             transform: skewX($rotation);
         }
     }
+
+    .links {
+        margin-top: 3em;
+
+        li {
+            display: inline-block;
+            padding: .25em;
+
+            &:before {
+                content: none;
+            }
+        }
+    }
 }
 
 .clearfix {
