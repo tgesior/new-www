@@ -183,7 +183,7 @@ section {
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                top: -1.65em;
+                top: -38px;
                 width: .25em;
                 background-color: $black-color;
             }
@@ -466,7 +466,6 @@ footer {
 
                 opacity: 0;
                 pointer-events: none;
-                font-size: smaller;
                 transition: $transition;
                 z-index: 3;
             }
@@ -476,7 +475,6 @@ footer {
                 padding: .5em;
                 margin-bottom: 8em;
                 position: relative;
-                cursor: pointer;
 
                 img {
                     box-sizing: content-box;
