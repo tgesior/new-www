@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
 const isDev = process.argv[1].indexOf('webpack-dev-server') !== -1;
-const PublicPath = isDev ? '': '/new-www';
+const PublicPath = '';
 
 const sassLoaders = [
   'css-loader',
