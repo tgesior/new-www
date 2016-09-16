@@ -303,6 +303,14 @@ a.button {
     @include round-image(120px);
 }
 
+.slogan {
+    font-weight: normal;
+
+    span {
+        color: #888;
+    }
+}
+
 .subheading {
     clear: both;
     position: relative;
